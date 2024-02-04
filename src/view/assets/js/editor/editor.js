@@ -3,15 +3,12 @@ let editor = ace.edit("editor");
 
 document.getElementById('compile-btn').addEventListener('click', function () {
     let editorContent = editor.getSession().getValue();
-    // editorContent = JSON.stringify(editorContent);
-    // Создаем объект XMLHttpRequest
+
     const xhr = new XMLHttpRequest();
 
-    // Настраиваем запрос
     xhr.open('POST', '/handlers/ajax/compile.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('Content-Type', 'application/json');
 
-    // Назначаем обработчик события успешного завершения запроса
     xhr.onload = function () {
         if (xhr.status >= 200 && xhr.status < 300) {
             console.log(xhr.responseText);
@@ -21,11 +18,10 @@ document.getElementById('compile-btn').addEventListener('click', function () {
         }
     };
 
-    // Назначаем обработчик события ошибки
     xhr.onerror = function () {
         console.error('Ошибка при выполнении запроса');
     };
 
-    // Отправляем запрос с содержимым редактора
-    xhr.send('code=' + encodeURIComponent(editorContent));
+    const jsonData = JSON.stringify({ code: editorContent });
+    xhr.send(jsonData);
 });

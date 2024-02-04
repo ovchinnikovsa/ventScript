@@ -17,7 +17,7 @@ class Ajax extends CommonMessage
 
     public function setRequest(): void
     {
-        $request = Post::getAll();
+        $request = Post::getJson();
         var_dump($request);
         die();
         try {

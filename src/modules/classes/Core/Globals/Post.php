@@ -16,6 +16,12 @@ class Post implements GlobalInterface
         return $_POST;
     }
 
+    public static function getJson(): mixed
+    {
+        $_POST = file_get_contents('php://input');
+        return $_POST;
+    }
+
     public static function set(string $key, mixed $value): void
     {
         $_POST[$key] = $value;
