@@ -15,7 +15,7 @@ body {
     width: 50%;
     background-color: #111;
     border: 1px solid #777;
-    height: 25vh;
+    height: 24.5vh;
 }
 
 #terminal {
@@ -24,7 +24,7 @@ body {
 }
 
 #input {
-    height: 20%;
+    height: 15%;
     width: 100%;
     padding: 5px;
     margin: 0;
