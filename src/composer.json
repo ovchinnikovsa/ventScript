@@ -1,0 +1,17 @@
+{
+    "name": "ovchie/ventscript",
+    "description": "Script for vent engineers",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Module\\": "modules/classes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ovchie",
+            "email": "ov4innikovsa@yandex.ru"
+        }
+    ],
+    "require": {}
+}
