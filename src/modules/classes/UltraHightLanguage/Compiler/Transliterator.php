@@ -1,6 +1,6 @@
 <?php
 
-namespace Module\UltraHightLanguage;
+namespace Module\UltraHightLanguage\Compiler;
 
 class Transliterator
 {

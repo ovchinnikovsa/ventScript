@@ -13,7 +13,10 @@ class Sensor
         $this->name = __CLASS__;
     }
 
-    function is_external(): bool {
+    function is_external(): bool
+    {
         return $this->is_external;
     }
+
+
 }
