@@ -2,17 +2,13 @@
 
 namespace Module\UltraHightLanguage\Variables;
 
-class Filter
+class Filter extends UltraVariables
 {
-    private bool $state = true;
-    public readonly string $name;
-    protected bool $is_external = true;
-
-    public function __construct() {
-        $this->name = __CLASS__;
+    public function __construct(string $object_name): void
+    {
+        $this->objectName = $object_name;
+        $this->state = false;
+        $this->stateType = 'bool';
     }
 
-    public function setState(bool $value): void {
-        $this->state = $value;
-    }
 }
