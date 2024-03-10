@@ -15,3 +15,6 @@ pbuild:
 
 prod:
 	docker-compose -f docker-compose-prod.yml up -d
+
+sprod:
+	docker-compose -f docker-compose-prod.yml stop
