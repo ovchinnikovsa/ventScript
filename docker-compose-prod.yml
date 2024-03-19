@@ -6,6 +6,8 @@ services:
     volumes:
       - "./src:/var/www/html"
       - "./docker/volumes/composer:/var/www/"
+    networks:
+      - titleSite
 
   ventscript_nginx:
     image: nginx:latest
@@ -15,3 +17,11 @@ services:
     volumes:
       - "./src:/var/www/html"
       - "./docker/nginx/conf.d:/etc/nginx/conf.d"
+    networks:
+      - titleSite
+
+networks:
+  titleSite:
+    external: true
+    name: titleSite
+    driver: bridge

@@ -10,8 +10,11 @@ stop:
 build:
 	docker-compose build
 
-certinit:
-	docker compose run --rm  certbot certonly --webroot --webroot-path /var/www/html/ --dry-run -d ovchie.space
+pbuild:
+	cd ./src && composer update
 
-certrun:
-	docker compose run --rm  certbot certonly --webroot --webroot-path /var/www/html/ -d ovchie.space
+prod:
+	docker-compose -f docker-compose-prod.yml up -d
+
+sprod:
+	docker-compose -f docker-compose-prod.yml stop
