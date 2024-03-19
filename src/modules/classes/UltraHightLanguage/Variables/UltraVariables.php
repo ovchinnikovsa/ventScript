@@ -16,7 +16,7 @@ implements UltraInterface
     protected float $stateMax = 100;
     protected string $objectName = '';
 
-    public function __construct(string $object_name): void
+    public function __construct(string $object_name)
     {
         $this->objectName = $object_name;
     }
