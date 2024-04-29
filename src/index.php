@@ -11,6 +11,4 @@ use Module\Core\Globals\Post;
 
 View::page('index');
 Session::set('sadf', 1);
-var_dump(Session::get('sadf'));
-var_dump(Session::get('1'));
-var_dump($_SESSION);
+
