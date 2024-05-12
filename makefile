@@ -10,8 +10,14 @@ stop:
 build:
 	docker-compose build
 
-pbuild:
-	cd ./src && composer update
+composer-install:
+	docker-compose exec --user root ventscript_php composer install
+
+composer-autoload:
+	docker-compose exec --user root ventscript_php composer dump-autoload
+
+composer-update:
+	docker-compose exec --user root ventscript_php composer update
 
 prod:
 	docker-compose -f docker-compose-prod.yml up -d

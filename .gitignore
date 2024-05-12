@@ -1,2 +1,4 @@
 /src/vendor
 /src/composer.*
+/src/tmp
+!/src/tmp/default.*

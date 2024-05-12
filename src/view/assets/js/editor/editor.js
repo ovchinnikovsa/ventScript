@@ -6,13 +6,12 @@ document.getElementById('compile-btn').addEventListener('click', function () {
 
     const xhr = new XMLHttpRequest();
 
-    xhr.open('POST', '/handlers/ajax/compile.php', true);
+    xhr.open('POST', '/compile', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
 
     xhr.onload = function () {
         if (xhr.status >= 200 && xhr.status < 300) {
             console.log(xhr.responseText);
-            // Здесь вы можете обработать ответ от сервера после компиляции
         } else {
             console.error('Ошибка при выполнении запроса');
         }

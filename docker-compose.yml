@@ -9,8 +9,8 @@ services:
       - 9000
     volumes:
       - "./src:/var/www/html"
-      - "./docker/php/composer.json:/var/www/composer.json"
-      - "./docker/php/composer.lock:/var/www/composer.lock"
+      - "./docker/php/composer.json:/var/www/html/composer.json"
+      - "./docker/php/composer.lock:/var/www/html/composer.lock"
       - ./docker/php/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
     networks:
       - internal

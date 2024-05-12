@@ -2,9 +2,9 @@
 
 namespace Module\Core;
 
-class CommonMessage
+trait CommonMessage
 {
-    protected static function formatMessage(string $message, bool $error = true, array $data = []): array
+    protected function formatMessage(string $message, bool $error = true, array $data = []): array
     {
         return [
             'error' => $error,
@@ -12,4 +12,5 @@ class CommonMessage
             'data' => $data,
         ];
     }
+
 }

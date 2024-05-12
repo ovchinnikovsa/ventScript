@@ -2,32 +2,18 @@
 
 namespace Module\Core;
 
-use Exception;
 use Module\Core\Globals\Post;
 use Module\Core\CommonMessage;
 
-class Ajax extends CommonMessage
+class Ajax
 {
-    private mixed $request;
+    use CommonMessage;
+
+    private array $request;
 
     function __construct()
     {
         $this->setRequest();
-    }
-
-    public function setRequest(): void
-    {
-        $request = Post::getJson();
-        var_dump($request);
-        die();
-        try {
-            $request = json_decode($request, true);
-        } catch (Exception $e) {
-            $this->sendResponse('Request parse error');
-        }
-        $this->checkRequest($request);
-
-        $this->request = $request;
     }
 
     public function getRequest(): mixed
@@ -35,14 +21,30 @@ class Ajax extends CommonMessage
         return $this->request;
     }
 
-    protected static function checkRequest(array $request): void
+    public function sendResponse(string $message, bool $error = true, array $data = []): void
     {
+        header('Content-Type: application/json');
+        http_response_code($error ? 400 : 200);
+        $response = $this->formatMessage($message, $error, $data);
+        json_encode($response);
+        echo json_encode($response);
+        die();
     }
 
-    public static function sendResponse(string $message, bool $error = true, array $data = []): void
+    private function setRequest(): void
     {
-        $response = parent::formatMessage($message, $error, $data);
-        json_encode($response);
-        die($response);
+        $request = Post::getJson();
+        try {
+            $request = json_decode($request, true);
+            // get error
+            $err = json_last_error();
+            if ($err !== JSON_ERROR_NONE) {
+                $this->sendResponse('Request parse error');
+            }
+        } catch (\Exception $e) {
+            $this->sendResponse('Request parse error');
+        }
+
+        $this->request = $request;
     }
 }
