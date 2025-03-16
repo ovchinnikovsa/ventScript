@@ -12,8 +12,6 @@ use Module\Core\Handler;
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 $requestUri = $_SERVER['REQUEST_URI'];
 try {
-    $undefined->method(); // Генерируем ошибку для теста
-
     if ($requestMethod === 'GET' && $requestUri === '/') {
         View::page('index');
     } elseif ($requestMethod === 'POST' && ($requestUri === '/compile' || $requestUri === '/exec')) {
