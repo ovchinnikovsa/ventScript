@@ -24,6 +24,7 @@ class Ajax
     public function sendResponse(string $message, bool $error = true, array $data = []): void
     {
         header('Content-Type: application/json');
+        header('Encoding: UTF-8');
         http_response_code($error ? 400 : 200);
         $response = $this->formatMessage($message, $error, $data);
         json_encode($response);

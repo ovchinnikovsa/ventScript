@@ -15,4 +15,7 @@ RUN curl -sSLf \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
+RUN chown -R www-data:www-data /var/www/html
+
 WORKDIR /var/www/html

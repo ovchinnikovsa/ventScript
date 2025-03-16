@@ -2,3 +2,4 @@
 /src/composer.*
 /src/tmp
 !/src/tmp/default.*
+/src/logs

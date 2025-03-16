@@ -39,7 +39,7 @@ class Handler
     {
         $code = $this->request->getRequest()['code'];
         $validator = new Validator($code);
-        if (!$validator->validatePhpCode())
+        if (!$validator->checkPhpErrors())
             throw new CompileException('Invalid PHP code');
 
         $fileRequest = new File('request');

@@ -1,6 +1,6 @@
 <?php
 
-namespace Module\UltraHightLanguage\Compiler;
+namespace Module\UltraHightLanguage\Compiler\File;
 
 class File
 {

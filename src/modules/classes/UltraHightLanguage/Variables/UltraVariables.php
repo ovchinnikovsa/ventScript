@@ -8,7 +8,7 @@ abstract class UltraVariables
 {
     use CommonMessage;
 
-    private string $name;
+    protected string $name;
 
     public function __construct(string $name) {
         $this->name = $name;
