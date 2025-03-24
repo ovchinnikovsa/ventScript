@@ -23,5 +23,6 @@ try {
     }
 } catch (Throwable $e) {
     error_log("Caught Exception: " . $e->getMessage());
+    http_response_code(500);
     exit("Caught Exception: " . $e->getMessage());
 }

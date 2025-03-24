@@ -24,21 +24,21 @@ class Compiler
             $translatedLine = Translator::translateVentScript($translatedLine);
             $this->outputFile->writeToFile($translatedLine . PHP_EOL);
         }
-
+$v = new Validator("");
 
 
         return true;
     }
 
-    private function syntaxCheck(string $output)
-    {
-        // todo add syntax check
+    // private function syntaxCheck(string $output)
+    // {
+    //     // todo add syntax check
 
 
-        if (!php_check_syntax()) {
-            $error = error_get_last();
-            $message = "Синтаксическая ошибка на строке {$error['line']}: {$error['message']}";
-            echo $message;
-        }
-    }
+    //     if (!php_check_syntax()) {
+    //         $error = error_get_last();
+    //         $message = "Синтаксическая ошибка на строке {$error['line']}: {$error['message']}";
+    //         echo $message;
+    //     }
+    // }
 }

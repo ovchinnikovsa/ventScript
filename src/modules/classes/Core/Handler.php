@@ -4,7 +4,7 @@ namespace Module\Core;
 
 use Module\Core\Exceptions\CompileException;
 use Module\UltraHightLanguage\Compiler\Compiler;
-use Module\UltraHightLanguage\Compiler\File;
+use Module\UltraHightLanguage\Compiler\File\File;
 use Module\UltraHightLanguage\Compiler\Validator;
 
 class Handler
@@ -45,7 +45,7 @@ class Handler
         $fileRequest = new File('request');
         $fileOutput = new File('output');
 
-        $compiler = new Compiler($fileRequest, $fileOutput);
+        $compiler = new Compiler($fileRequest, $fileOutput, $validator);
         $compiler->compile();
 
         $this->request->sendResponse('ok', false);
