@@ -1,11 +1,12 @@
 <?php
 
-namespace Module\UltraHightLanguage\Compiler;
+namespace Module\UltraHightLanguage\Compiler\Validator\VSValidator;
 
-use Module\Core\Exceptions\CompileException;
 use Throwable;
+use Module\Core\Exceptions\CompileException;
+use Module\Core\UltraHightLanguage\Compiler\Validator\Validator;
 
-class Validator
+class VSValidator implements Validator
 {
     private string $code;
 
@@ -15,6 +16,16 @@ class Validator
             throw new CompileException('Empty code');
 
         $this->code = $code;
+    }
+
+    /**
+     * Валидирует данные.
+     * @return bool Возвращает true, если валидация успешна.
+     * @throws InvalidArgumentException Если данные неверны.
+     */
+    public function validate(): bool
+    { // TODO: Implement validate() method.
+        return true;
     }
 
     public function checkPhpErrors(): void

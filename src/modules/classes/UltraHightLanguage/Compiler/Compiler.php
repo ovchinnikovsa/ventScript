@@ -8,13 +8,13 @@ class Compiler
 {
     private File $inputFile;
     private File $outputFile;
-    private Validator $validator;
+    private Translator $translator;
 
-    public function __construct(File $inputFile, File $outputFile, Validator $validator)
+    public function __construct(File $inputFile, File $outputFile)
     {
         $this->inputFile = $inputFile;
         $this->outputFile = $outputFile;
-        $this->validator = $validator;
+        $translator = new Translator();
     }
 
     public function compile(): bool
@@ -24,21 +24,8 @@ class Compiler
             $translatedLine = Translator::translateVentScript($translatedLine);
             $this->outputFile->writeToFile($translatedLine . PHP_EOL);
         }
-$v = new Validator("");
 
 
         return true;
     }
-
-    // private function syntaxCheck(string $output)
-    // {
-    //     // todo add syntax check
-
-
-    //     if (!php_check_syntax()) {
-    //         $error = error_get_last();
-    //         $message = "Синтаксическая ошибка на строке {$error['line']}: {$error['message']}";
-    //         echo $message;
-    //     }
-    // }
 }
