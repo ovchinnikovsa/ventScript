@@ -1,16 +1,24 @@
 <?php
-
 namespace Module\Core;
+
+use Module\Core\DTO\CommonMessageDTO;
 
 trait CommonMessage
 {
-    protected function formatMessage(string $message, bool $error = true, array $data = []): array
+    protected CommonMessageDTO $commonMessage;
+
+    protected function setMessage(string $message, bool $error = true, array $data = []): void
     {
-        return [
-            'error' => $error,
-            'message' => $message,
-            'data' => $data,
-        ];
+        $this->commonMessage = new CommonMessageDTO($message, $error, $data);
     }
 
+    protected function setMessageFromDto(CommonMessageDTO $commonMessage): void
+    {
+        $this->commonMessage = $commonMessage;
+    }
+
+    public function getMessage(): CommonMessageDTO
+    {
+        return $this->commonMessage;
+    }
 }
