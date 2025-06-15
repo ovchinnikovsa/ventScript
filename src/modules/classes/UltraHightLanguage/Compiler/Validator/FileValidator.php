@@ -1,41 +1,35 @@
 <?php
 
-namespace Module\UltraHightLanguage\Compiler\Validator\FileValidator;
+namespace Module\UltraHightLanguage\Compiler\Validator;
 
-use Module\Core\UltraHightLanguage\Compiler\Validator\Validator;
-use InvalidArgumentException;
+use Module\UltraHightLanguage\Compiler\Validator\Validator;
+use Module\UltraHightLanguage\Compiler\Validator\ValidateException;
 
-class FileValidator implements Validator {
-    private string $filePath;
+class FileValidator implements Validator
+{
+    private \SplFileInfo $file;
 
     /**
-     * @param string $filePath Путь к файлу для валидации.
+     * @param \SplFileInfo $file
      */
-    public function __construct(string $filePath) {
-        $this->filePath = $filePath;
+    public function setFile(\SplFileInfo $file): void
+    {
+        $this->file = $file;
     }
 
     /**
      * Проверяет, что файл существует, доступен и является файлом.
      * @return bool
-     * @throws InvalidArgumentException
+     * @throws ValidateException
      */
-    public function validate(): bool {
-        // Проверка существования файла
-        if (!file_exists($this->filePath)) {
-            throw new InvalidArgumentException("Файл не существует: {$this->filePath}");
+    public function validate(): void
+    {
+        if ($this->file->isFile() === false) {
+            throw new ValidateException("Файл не существует: {$this->file->getPath()}");
         }
 
-        // Проверка, что это именно файл (не директория)
-        if (!is_file($this->filePath)) {
-            throw new InvalidArgumentException("Указанный путь не является файлом: {$this->filePath}");
+        if ($this->file->isReadable() === false) {
+            throw new ValidateException("Файл недоступен для чтения: {$this->file->getPath()}");
         }
-
-        // Проверка доступности для чтения
-        if (!is_readable($this->filePath)) {
-            throw new InvalidArgumentException("Файл недоступен для чтения: {$this->filePath}");
-        }
-
-        return true;
     }
 }

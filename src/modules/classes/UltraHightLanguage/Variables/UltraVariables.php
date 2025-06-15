@@ -4,7 +4,7 @@ namespace Module\UltraHightLanguage\Variables;
 
 use Module\Core\CommonMessage;
 
-abstract class UltraVariables
+abstract class UltraVariables // TODO: create a abstract fabric to create prototype variables from users
 {
     use CommonMessage;
 

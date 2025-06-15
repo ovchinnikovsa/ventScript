@@ -1,10 +1,10 @@
 <?php
 
-namespace Module\UltraHightLanguage\Compiler\Validator\VSValidator;
+namespace Module\UltraHightLanguage\Compiler\Validator;
 
 use Throwable;
 use Module\Core\Exceptions\CompileException;
-use Module\Core\UltraHightLanguage\Compiler\Validator\Validator;
+use Module\UltraHightLanguage\Compiler\Validator\Validator;
 
 class VSValidator implements Validator
 {
@@ -23,9 +23,9 @@ class VSValidator implements Validator
      * @return bool Возвращает true, если валидация успешна.
      * @throws InvalidArgumentException Если данные неверны.
      */
-    public function validate(): bool
+    public function validate(): void
     { // TODO: Implement validate() method.
-        return true;
+        return;
     }
 
     public function checkPhpErrors(): void

@@ -2,7 +2,7 @@
 
 namespace Module\UltraHightLanguage\Compiler\File;
 
-class File
+class File // TODO: delete and mb just write with file class
 {
     private string $path;
     private string $filename;
